@@ -9,6 +9,10 @@ module main.project {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires javafx.media;
+    requires java.desktop;
+    requires java.sql;
+    requires com.oracle.database.jdbc;
 
     opens main.project to javafx.fxml;
     exports main.project;
