@@ -6,7 +6,9 @@ Contributors :
 Rahaf_Nasrallah
 
 
-Majd_Hamadneh Although she doesn't have a Github account yet, she will soon so worry not :)
+Majd_Hamadneh 
+
+Although she doesn't have a Github account yet, she will soon so worry not :)
 
 
 I'm gonna make this a masterpiece in only one week. 
