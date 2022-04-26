@@ -1,12 +1,14 @@
 # project 
-THIS IS MY FIRST SOFTWARE PROJECT TECHNICALLY SO PLEASE TAKE IT WITH A GRAIN OF SALT 
+This is my first software project so please take everything with a grain of salt.
 
-CONRIBUTORS :
+Contributors :
 
-#RAHAF_NASRALLAH 
-
-
-MAJD_HAMADNEH ALTHOUGH SHE DOESN'T HAVE A GITHUB ACCOUNT YET BUT SHE WILL SO WORRY NOT :)
+Rahaf_Nasrallah
 
 
-I'M GONNA MAKE THIS WORK 
+Majd_Hamadneh 
+
+Although she doesn't have a Github account yet, she will soon so worry not :)
+
+
+I'm gonna make this a masterpiece in only one week. 
