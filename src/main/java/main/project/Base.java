@@ -5,7 +5,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +16,7 @@ public class Base extends Application {
     music Music = new music();
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Base.class.getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Base.class.getResource("choose.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 986, 731);
         stage.setTitle("Al'Awda Sports Club");
         stage.getIcons().add(new Image("icon.png"));

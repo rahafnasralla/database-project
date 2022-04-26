@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="786.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="481.0" layoutY="559.0" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #4a67da 0.0%, #ffffff 100.0%); -fx-background-radius: 100;" text="Submit Vote">
+         <font>
+            <Font name="Trebuchet MS Bold" size="30.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="221.0" fitWidth="403.0" layoutY="430.0">
+         <image>
+            <Image url="@../../images/vote.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
