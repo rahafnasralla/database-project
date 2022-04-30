@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="286.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="118.0" layoutY="53.0" text="MAJD HAMADNEH">
@@ -14,9 +13,9 @@
             <Font name="Ebrima Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="122.0" fitWidth="118.0" layoutY="3.0">
+      <ImageView fitHeight="113.0" fitWidth="122.0" layoutX="6.0" layoutY="8.0">
          <image>
-            <Image url="@../../images/Webp.net-resizeimage%20(1).png" />
+            <Image url="@../../images/logo.png" />
          </image>
       </ImageView>
    </children>
