@@ -100,6 +100,7 @@ public class signupController implements Initializable {
         }
         else if (selected=="teacher")
         {
+            //insert
             //popup then change scene
         }
 

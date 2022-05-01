@@ -11,12 +11,18 @@ public class user {
     private String e_mail;
     private String gender;
     private LocalDate birthdate;
+    private int mngflag;
+    private int elect;
+    private int votes;
+    private String blood;
+    private String disable;
+    private String status;
     public user()
     {
       ID=0;
-      pass=0;
-      pnumber=0;
-      fname=lname=$address=e_mail=gender=null;
+      pass=elect=0;
+      pnumber=mngflag=votes=0;
+      fname=lname=$address=e_mail=gender=blood=disable=status=null;
     }
     public void setID(int ID) {this.ID=ID;}
     public int getID() {return this.ID;}
@@ -36,6 +42,20 @@ public class user {
     public String getGender() {return this.gender;}
     public void setBirthdate(LocalDate birthdate) {this.birthdate=birthdate;}
     public LocalDate getBirthdate() {return this.birthdate;}
+
+    public void setBlood(String blood) {this.blood=blood;}
+    public String getBlood() {return this.blood;}
+    public void setDisable(String disable) {this.disable=disable;}
+    public String getDisable() {return this.disable;}
+    public void setStatus(String status) {this.status=status;}
+    public String getStatus() {return this.status;}
+
+    public void setElect(int elect) {this.elect=elect;}
+    public int getElect() {return this.elect;}
+    public void setMngflag(int mngflag) {this.mngflag=mngflag;}
+    public int getMngflag() {return this.mngflag;}
+    public void setVotes(int votes) {this.votes=votes;}
+    public int getVotes() {return this.votes;}
 
 
 }

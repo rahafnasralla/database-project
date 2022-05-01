@@ -8,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import model.member;
 
 import java.net.URL;
@@ -19,16 +20,19 @@ import java.util.ResourceBundle;
 public class loginController implements Initializable {
 
       ObservableList<String> list = FXCollections.observableArrayList("member","administrator","teacher");
+      int managerflag;
       private member user;
       private Connection con;
       private final  Base main = new Base();
       @FXML
-      private ComboBox<String> choice;
+      private Label msg;
+      @FXML
+      private ComboBox<String> choice= new ComboBox<String>();
       @FXML
       private TextField username;
       @FXML
       private TextField password;
-      String selected;
+      static String selected;
       @FXML
       public void tosignup() {
           main.changeScene("$signup.fxml");
@@ -38,7 +42,7 @@ public class loginController implements Initializable {
       public void loginchoose() {
             selected = choice.getValue();
             if(selected!=null)
-            main.changeScene("$login.fxml");
+            main.changeScene("login.fxml");
             else
             {
                 //show message
@@ -46,17 +50,32 @@ public class loginController implements Initializable {
       }
     @FXML
     public void login() {
-          if(selected=="member")
+          System.out.println("hii");
+          if(selected=="member"||selected=="administrator")
           {
+              if(username.getText().isEmpty() || password.getText().isEmpty()){
+                  msg.textProperty().unbind();
+                  msg.setText("Please Enter Information");
+                  return;
+              }
+              if(isMember()) {
+                  if (managerflag == 1)
+                      main.changeScene("$signup.fxml"); ///for now
+                  else
+                      main.changeScene("member_dashboard.fxml");
+              }
 
           }
-          else if (selected=="administrator")
-          {
 
-          }
           else if(selected=="teacher")
           {
-
+              if(username.getText().isEmpty() || password.getText().isEmpty()){
+                  msg.textProperty().unbind();
+                  msg.setText("Please Enter Information");
+                  return;
+              }
+              if(isTeacher())
+                  main.changeScene("member_dashboard.fxml");  //for now
           }
 
     }
@@ -69,44 +88,68 @@ public class loginController implements Initializable {
         userholder.getInstance().setUser(user);
        }
 
-    private boolean validLogin() {
-        if(username.getText().isEmpty() || password.getText().isEmpty()){
-            //msg.setText("Please Enter Information");
-        }
-        else if(isUser()){
-           // msg.setText("Success!");
-            return true;
-        }
-        else {
-            //msg.setText("Invalid username or Password");
-        }
-        return false;
-    }
 
-    private boolean isUser(){
+
+    private boolean isMember(){
         try {
             Connection con = main.getConnection();
             Statement stmt = con.createStatement();
-            String sql = "select * from member";
+            String sql = "select * from MEMBER";
             ResultSet resultSet = stmt.executeQuery(sql);
-
             while (resultSet.next()) {
-                String user = resultSet.getString("username");
+                msg.setTextFill(Color.valueOf("#698ee4"));
+                String name = resultSet.getString("SSN");
                 String pass = resultSet.getString("password");
-                if (username.getText().matches(user) && password.getText().matches(pass)) {
-                    //this.user = DbWraper.wrapUser(resultSet);
+                 managerflag = resultSet.getInt("mflag");
+                if (username.getText().matches(name) && password.getText().matches(pass)) {
+                    //user = DbWrapper.getUser(resultSet);
                     stmt.close();
                     con.close();
+                    msg.setText("Success");
                     return true;
                 }
             }
             stmt.close();
             con.close();
+            msg.setTextFill(Color.RED);
+            msg.setText("Invalid Username or Password");
+            return false;
         }catch (Exception e){
             System.out.println("Error with getting and checking Users from DB");
             e.printStackTrace();
+            msg.textProperty().unbind();
+            return false;
         }
-        return false;
+    }
+    private boolean isTeacher(){
+        try {
+            Connection con = main.getConnection();
+            Statement stmt = con.createStatement();
+            String sql = "select * from teacher";
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                msg.setTextFill(Color.valueOf("#698ee4"));
+                String name = rs.getString("T_SSN");
+                String pass = rs.getString("password");
+                if (username.getText().matches(name) && password.getText().matches(pass)) {
+                    //user = DbWrapper.getUser(resultSet);
+                    stmt.close();
+                    con.close();
+                    msg.setText("Success");
+                    return true;
+                }
+            }
+            stmt.close();
+            con.close();
+            msg.setTextFill(Color.RED);
+            msg.setText("Invalid Username or Password");
+            return false;
+        }catch (Exception e){
+            System.out.println("Error with getting and checking Users from DB");
+            e.printStackTrace();
+            msg.textProperty().unbind();
+            return false;
+        }
     }
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
