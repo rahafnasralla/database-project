@@ -134,6 +134,6 @@
             <Image url="@../../images/output-onlinegiftools.gif" />
          </image>
       </ImageView>
-      <DatePicker fx:id="birthdate" layoutX="464.0" layoutY="449.0" promptText="Birthdate" style="-fx-font-size: 14;" />
+      <DatePicker fx:id="birthdate" layoutX="464.0" layoutY="449.0" onAction="#getDate" promptText="Birthdate" style="-fx-font-size: 14;" />
    </children>
 </AnchorPane>

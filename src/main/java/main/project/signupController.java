@@ -16,13 +16,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 public class signupController implements Initializable {
     ObservableList<String> asalist = FXCollections.observableArrayList("member","teacher");
+    ObservableList<String> bloodlist = FXCollections.observableArrayList("A+","A-","B+","B-","AB+","AB-","O+","O-");
+    private byte [] photo;
     private Connection con;
     private final  Base main = new Base();
     static user user=new user();
@@ -49,11 +49,33 @@ public class signupController implements Initializable {
     @FXML
     private TextField confirm;
     @FXML
-    private ComboBox<String> asa;
+    private ComboBox<String> asa = new ComboBox<String>();
     @FXML
     private DatePicker birthdate;
-    private String selected;
 
+    private String selected;
+    @FXML
+    private TextField telephone;
+    @FXML
+    private TextField disabled;
+    @FXML
+    private TextField nofamily;
+    @FXML
+    private TextField nounemployed;
+    @FXML
+    private TextField nodisabled;
+    @FXML
+    private TextField income;
+    @FXML
+    private ToggleGroup mstatus;
+    @FXML
+    private RadioButton married;
+    @FXML
+    private RadioButton single;
+    @FXML
+    private RadioButton divorced;
+    @FXML
+    private ComboBox<String> bloodtype = new ComboBox<String>();
 
 
     @FXML
@@ -94,7 +116,7 @@ public class signupController implements Initializable {
         {
             ///add msg
         }
-        if(selected=="memeber")
+        if(selected.equals("memeber"))
         {
             main.changeScene("member.fxml");
         }
@@ -106,10 +128,52 @@ public class signupController implements Initializable {
 
 
     }
+    @FXML
+    public void chooseblood(){
+        user.setBlood(bloodtype.getValue());
+    }
+    @FXML
+    public void addPhoto(){
+        FileChooser fileChooser = new FileChooser();
+
+        //Set extension filter
+        FileChooser.ExtensionFilter extFilterJPG
+                = new FileChooser.ExtensionFilter("JPG files (*.JPG)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterjpg
+                = new FileChooser.ExtensionFilter("jpg files (*.jpg)", "*.jpg");
+        FileChooser.ExtensionFilter extFilterPNG
+                = new FileChooser.ExtensionFilter("PNG files (*.PNG)", "*.PNG");
+        FileChooser.ExtensionFilter extFilterpng
+                = new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
+        fileChooser.getExtensionFilters()
+                .addAll(extFilterJPG, extFilterjpg, extFilterPNG, extFilterpng);
+        //Show open file dialog
+        File file = fileChooser.showOpenDialog(null);
+
+        if(file != null)
+            try {
+                InputStream fin = new FileInputStream(file);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                byte[] buf = new byte[1024];
+
+                for (int readNum; (readNum = fin.read(buf)) != -1;) {
+                    bos.write(buf, 0, readNum);
+                }
+                    photo = bos.toByteArray();
+
+            } catch (IOException ex) {
+                Logger.getLogger("ss");
+            }
+    }
+    @FXML
+    public void choosemembership(){
+         //popup pops up
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         asa.setItems(asalist);
+        bloodtype.setItems(bloodlist);
 
     }
 }

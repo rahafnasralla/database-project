@@ -22,7 +22,6 @@ public class loginController implements Initializable {
       ObservableList<String> list = FXCollections.observableArrayList("member","administrator","teacher");
       int managerflag;
       private member user;
-      private Connection con;
       private final  Base main = new Base();
       @FXML
       private Label msg;
@@ -31,7 +30,7 @@ public class loginController implements Initializable {
       @FXML
       private TextField username;
       @FXML
-      private TextField password;
+      private PasswordField password;
       static String selected;
       @FXML
       public void tosignup() {
@@ -51,7 +50,7 @@ public class loginController implements Initializable {
     @FXML
     public void login() {
           System.out.println("hii");
-          if(selected=="member"||selected=="administrator")
+          if(selected.equals("member")||selected.equals("administrator"))
           {
               if(username.getText().isEmpty() || password.getText().isEmpty()){
                   msg.textProperty().unbind();
@@ -67,7 +66,7 @@ public class loginController implements Initializable {
 
           }
 
-          else if(selected=="teacher")
+          else if(selected.equals("teacher"))
           {
               if(username.getText().isEmpty() || password.getText().isEmpty()){
                   msg.textProperty().unbind();

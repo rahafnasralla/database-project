@@ -5,12 +5,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="731.0" maxWidth="986.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="986.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="731.0" maxWidth="986.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="986.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.project.signupController">
    <children>
       <Label layoutX="204.0" layoutY="283.0" text="Please fill the feilds with information about your family">
          <font>
@@ -22,27 +23,27 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="262.0" layoutY="327.0" prefHeight="30.0" prefWidth="237.0" promptText="Telephone Number">
+      <TextField fx:id="telephone" layoutX="262.0" layoutY="327.0" prefHeight="30.0" prefWidth="237.0" promptText="Telephone Number">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="262.0" layoutY="366.0" prefHeight="30.0" prefWidth="237.0" promptText="Number of Family Members">
+      <TextField fx:id="nofamily" layoutX="262.0" layoutY="366.0" prefHeight="30.0" prefWidth="237.0" promptText="Number of Family Members">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="262.0" layoutY="405.0" prefHeight="30.0" prefWidth="237.0" promptText="Number of the Unemployed ones">
+      <TextField fx:id="nounemployed" layoutX="262.0" layoutY="405.0" prefHeight="30.0" prefWidth="237.0" promptText="Number of the Unemployed ones">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="262.0" layoutY="444.0" prefHeight="30.0" prefWidth="237.0" promptText="Number of the Disabled ones">
+      <TextField fx:id="nodisabled" layoutX="262.0" layoutY="444.0" prefHeight="30.0" prefWidth="237.0" promptText="Number of the Disabled ones">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="262.0" layoutY="481.0" prefHeight="30.0" prefWidth="237.0" promptText="Monthly Income">
+      <TextField fx:id="income" layoutX="262.0" layoutY="481.0" prefHeight="30.0" prefWidth="237.0" promptText="Monthly Income">
          <font>
             <Font size="14.0" />
          </font>
@@ -57,12 +58,12 @@
             <Font name="Trebuchet MS" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="296.0" layoutY="592.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: radial-gradient(radius 180%, white, derive(grey, -30%), derive(black, 30%));" text="Add Photo" textFill="#f5f2f2">
+      <Button layoutX="296.0" layoutY="592.0" mnemonicParsing="false" onAction="#addPhoto" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: radial-gradient(radius 180%, white, derive(grey, -30%), derive(black, 30%));" text="Add Photo" textFill="#f5f2f2">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="737.0" layoutY="666.0" mnemonicParsing="false" style="-fx-background-color: radial-gradient(radius 180%, white, derive(grey, -30%), derive(black, 30%));" text="Choose your membership type " textFill="WHITE">
+      <Button layoutX="737.0" layoutY="666.0" mnemonicParsing="false" onAction="#choosemembership" style="-fx-background-color: radial-gradient(radius 180%, white, derive(grey, -30%), derive(black, 30%));" text="Choose your membership type " textFill="WHITE">
          <font>
             <Font name="Trebuchet MS Bold" size="14.0" />
          </font>
@@ -87,23 +88,26 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ComboBox layoutX="262.0" layoutY="110.0" prefHeight="30.0" prefWidth="237.0" promptText="Blood Type" style="-fx-background-color: radial-gradient(radius 180%, white, derive(grey, -30%), derive(black, 30%)); -fx-font-size: 14;" />
-      <TextField layoutX="263.0" layoutY="156.0" prefHeight="30.0" prefWidth="237.0" promptText="Disability">
+      <ComboBox fx:id="bloodtype" layoutX="262.0" layoutY="110.0" onAction="#chooseblood" prefHeight="30.0" prefWidth="237.0" promptText="Blood Type" style="-fx-background-color: radial-gradient(radius 180%, white, derive(grey, -30%), derive(black, 30%)); -fx-font-size: 14;" />
+      <TextField fx:id="disabled" layoutX="263.0" layoutY="156.0" prefHeight="30.0" prefWidth="237.0" promptText="Disability">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <RadioButton layoutX="263.0" layoutY="205.0" mnemonicParsing="false" text="Married">
+      <RadioButton fx:id="married" layoutX="263.0" layoutY="205.0" mnemonicParsing="false" text="Married">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="mstatus" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="single" layoutX="369.0" layoutY="205.0" mnemonicParsing="false" text="Single" toggleGroup="$mstatus">
          <font>
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="369.0" layoutY="205.0" mnemonicParsing="false" text="Single">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </RadioButton>
-      <RadioButton layoutX="474.0" layoutY="205.0" mnemonicParsing="false" text="Divorced">
+      <RadioButton fx:id="divorced" layoutX="474.0" layoutY="205.0" mnemonicParsing="false" text="Divorced" toggleGroup="$mstatus">
          <font>
             <Font size="14.0" />
          </font>
