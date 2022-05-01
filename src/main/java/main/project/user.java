@@ -17,12 +17,17 @@ public class user {
     private String blood;
     private String disable;
     private String status;
+    private byte [] photo;
     public user()
     {
       ID=0;
       pass=elect=0;
       pnumber=mngflag=votes=0;
-      fname=lname=$address=e_mail=gender=blood=disable=status=null;
+      fname=lname=$address=e_mail=gender=null;
+      blood="A+";
+      disable="  ";
+      status = "single";
+      birthdate=LocalDate.of(2013, 6, 13);
     }
     public void setID(int ID) {this.ID=ID;}
     public int getID() {return this.ID;}
@@ -56,6 +61,8 @@ public class user {
     public int getMngflag() {return this.mngflag;}
     public void setVotes(int votes) {this.votes=votes;}
     public int getVotes() {return this.votes;}
+    public void setPhoto(byte[] photo) {this.photo=photo;}
+    public byte[] getPhoto() {return this.photo;}
 
 
 }

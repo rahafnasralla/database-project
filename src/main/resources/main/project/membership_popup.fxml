@@ -8,25 +8,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.project.signupController">
    <children>
       <ImageView fitHeight="239.0" fitWidth="245.0" layoutX="167.0" layoutY="73.0">
          <image>
             <Image url="@../../images/signupmember.png" />
          </image>
       </ImageView>
-      <ComboBox layoutX="28.0" layoutY="46.0" prefHeight="30.0" prefWidth="206.0" promptText="Membership Type" style="-fx-background-color: #FFB6C1; -fx-font-size: 14;" />
-      <Label layoutX="28.0" layoutY="103.0" text="Your card number">
+      <ComboBox fx:id="membertype" layoutX="28.0" layoutY="46.0" onAction="#choosetype" prefHeight="30.0" prefWidth="206.0" promptText="Membership Type" style="-fx-background-color: #FFB6C1; -fx-font-size: 14;" />
+      <Label fx:id="cardno" layoutX="28.0" layoutY="103.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="28.0" layoutY="137.0" text="price">
+      <Label fx:id="price" layoutX="28.0" layoutY="137.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="28.0" layoutY="172.0" text="Valid for">
+      <Label fx:id="validfor" layoutX="28.0" layoutY="172.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

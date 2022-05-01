@@ -112,5 +112,6 @@
             <Font size="14.0" />
          </font>
       </RadioButton>
+      <Label fx:id="msg1" layoutX="543.0" layoutY="645.0" prefHeight="17.0" prefWidth="292.0" textFill="#fc0303" />
    </children>
 </AnchorPane>

@@ -135,5 +135,6 @@
          </image>
       </ImageView>
       <DatePicker fx:id="birthdate" layoutX="464.0" layoutY="449.0" onAction="#getDate" promptText="Birthdate" style="-fx-font-size: 14;" />
+      <Label fx:id="msg" layoutX="426.0" layoutY="592.0" prefHeight="17.0" prefWidth="279.0" textFill="#ff0101" />
    </children>
 </AnchorPane>
