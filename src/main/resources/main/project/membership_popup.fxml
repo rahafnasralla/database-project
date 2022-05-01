@@ -31,7 +31,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="88.0" layoutY="212.0" mnemonicParsing="false" style="-fx-background-color: #FFB6C1;" text="OK">
+      <Button layoutX="88.0" layoutY="212.0" mnemonicParsing="false" onAction="#addmembership" style="-fx-background-color: #FFB6C1;" text="OK">
          <font>
             <Font size="14.0" />
          </font>

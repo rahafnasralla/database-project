@@ -272,7 +272,17 @@ public class signupController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-         //popup pops up
+         main.popupScene("membership_popup.fxml");
+    }
+    @FXML
+    public void choosetype(){
+        ////insert values into membership table and change the text on the labels
+    }
+    @FXML
+    public void addmembership(){
+
+        main.changeScene("member_dashboard.fxml");
+        main.closePopup();
     }
     @FXML
     public void ok()
