@@ -80,7 +80,7 @@ public class loginController implements Initializable {
     }
     @FXML
     public void forgot() {
-        main.changeScene("$changepassword.fxml");
+        main.popupScene("changepassword.fxml");
     }
 
       private void setUser() {

@@ -181,7 +181,7 @@ public class signupController implements Initializable {
                 {
                     ex.printStackTrace();
                 }
-                //popup then change scene
+                main.popupScene("popupsuccesss.fxml");
             }
         }
         else
@@ -273,6 +273,12 @@ public class signupController implements Initializable {
             e.printStackTrace();
         }
          //popup pops up
+    }
+    @FXML
+    public void ok()
+    {
+        main.changeScene("member_dashboard.fxml");  ///for now
+        main.closePopup();
     }
 
     @Override

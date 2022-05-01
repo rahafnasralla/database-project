@@ -5,6 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +14,7 @@ import java.sql.SQLException;
 
 public class Base extends Application {
     private static Stage stage;
+    private static Stage stage2;
     private static Connection con;
     music Music = new music();
     @Override
@@ -40,9 +43,23 @@ public class Base extends Application {
 
     }
 
-    public void popupScene(String fxml) {
+    public void popupScene(String fxml)  {
+        try {
+            Parent m = FXMLLoader.load(getClass().getResource(fxml));
 
+            Scene ms = new Scene(m);
+            ms.getStylesheets().add("CSS.css");
+            stage2 = new Stage();
+            stage2.initStyle(StageStyle.UNDECORATED);
+            stage2.setScene(ms);
+            stage2.show();
+        }
+        catch (IOException ex) {
 
+        }
+    }
+    public void closePopup()  {
+            stage2.hide();
     }
     public Connection getConnection() throws SQLException {
         con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##rova", "123456");
