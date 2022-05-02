@@ -6,8 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 
@@ -19,10 +17,12 @@ import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 public class signupController implements Initializable {
+    ObservableList<String> typelist = FXCollections.observableArrayList("monthly","yearly");
     ObservableList<String> asalist = FXCollections.observableArrayList("member","teacher");
     ObservableList<String> bloodlist = FXCollections.observableArrayList("A+","A-","B+","B-","AB+","AB-","O+","O-");
     private Connection con;
     private final  Base main = new Base();
+    static membership membership = new membership();
     static user user=new user();
     static family family = new family();
     @FXML
@@ -276,7 +276,33 @@ public class signupController implements Initializable {
     }
     @FXML
     public void choosetype(){
-        ////insert values into membership table and change the text on the labels
+        membership.setType(membertype.getValue());
+        membership.setM_ID(user.getID());
+        try {
+            con = main.getConnection();
+            String sql = "Insert into MEMBERSHIP (STARTINGDATE, expiring_date, membership_type, price, m_ssn) " + "values (?,?,?,?,?)";
+            PreparedStatement stmt = con.prepareStatement( sql,Statement.RETURN_GENERATED_KEYS);
+            stmt.setDate(1,Date.valueOf(membership.getStarting()));
+            stmt.setDate(2, Date.valueOf(membership.getExpiring()) );
+            stmt.setString(3,membership.getType());
+            stmt.setInt(4,membership.getPrice());
+            stmt.setInt(5,membership.getM_ID());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.executeQuery("select CARD_SEQ.currval from DUAL");
+            if(rs != null && rs.next())
+                membership.setCardnumber(rs.getInt(1));
+            stmt.close();
+            con.close();
+
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        validfor.setText("Expiring Date :"+membership.getExpiring());
+        cardno.setText("Card Number :"+membership.getCardnumber());
+        price.setText("Price :"+membership.getPrice());
+
     }
     @FXML
     public void addmembership(){
@@ -295,6 +321,7 @@ public class signupController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         asa.setItems(asalist);
         bloodtype.setItems(bloodlist);
+        membertype.setItems(typelist);
 
     }
 }

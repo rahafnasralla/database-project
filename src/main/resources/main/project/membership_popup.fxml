@@ -16,17 +16,17 @@
          </image>
       </ImageView>
       <ComboBox fx:id="membertype" layoutX="28.0" layoutY="46.0" onAction="#choosetype" prefHeight="30.0" prefWidth="206.0" promptText="Membership Type" style="-fx-background-color: #FFB6C1; -fx-font-size: 14;" />
-      <Label fx:id="cardno" layoutX="28.0" layoutY="103.0">
+      <Label fx:id="cardno" layoutX="28.0" layoutY="103.0" prefHeight="20.0" prefWidth="314.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="price" layoutX="28.0" layoutY="137.0">
+      <Label fx:id="price" layoutX="28.0" layoutY="137.0" prefHeight="20.0" prefWidth="280.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="validfor" layoutX="28.0" layoutY="172.0">
+      <Label fx:id="validfor" layoutX="28.0" layoutY="172.0" prefHeight="20.0" prefWidth="280.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
