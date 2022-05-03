@@ -194,10 +194,11 @@ public class loginController implements Initializable {
     }
     @FXML
     public void close(){
-        main.closePopup();  ///or maybe make it close لما أكبس على login scene maybe
+        main.closePopup();  ///or maybe make it close on login scene maybe
     }
-        @Override
-        public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
             choice.setItems(list);
         }
 //
