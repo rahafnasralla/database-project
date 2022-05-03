@@ -155,6 +155,7 @@ public class loginController implements Initializable {
     }
     @FXML
     public void change(){
+          //I have to check if the ssn is valid but later
           if(selected.equals("member")||selected.equals("administrator"))
           {
               String sql = "update member set PASSWORD  = ? where SSN = ?";
@@ -190,7 +191,10 @@ public class loginController implements Initializable {
               }
           }
           ///show message and maybe send email but i'll do later
-          main.closePopup();
+    }
+    @FXML
+    public void close(){
+        main.closePopup();  ///or maybe make it close لما أكبس على login scene maybe
     }
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {

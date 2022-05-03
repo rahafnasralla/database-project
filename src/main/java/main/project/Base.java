@@ -48,7 +48,7 @@ public class Base extends Application {
             Parent m = FXMLLoader.load(getClass().getResource(fxml));
 
             Scene ms = new Scene(m);
-            ms.getStylesheets().add("CSS.css");
+            //ms.getStylesheets().add("CSS.css");
             stage2 = new Stage();
             stage2.initStyle(StageStyle.UNDECORATED);
             stage2.setScene(ms);
