@@ -12,9 +12,7 @@ import javafx.scene.paint.Color;
 import model.member;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class loginController implements Initializable {
@@ -22,6 +20,7 @@ public class loginController implements Initializable {
       ObservableList<String> list = FXCollections.observableArrayList("member","administrator","teacher");
       int managerflag;
       private member user;
+      private Connection con0;
       private final  Base main = new Base();
       @FXML
       private Label msg;
@@ -30,7 +29,11 @@ public class loginController implements Initializable {
       @FXML
       private TextField username;
       @FXML
+      private TextField userID;
+      @FXML
       private PasswordField password;
+      @FXML
+      private PasswordField reset;
       static String selected;
       @FXML
       public void tosignup() {
@@ -97,10 +100,10 @@ public class loginController implements Initializable {
             ResultSet resultSet = stmt.executeQuery(sql);
             while (resultSet.next()) {
                 msg.setTextFill(Color.valueOf("#698ee4"));
-                String name = resultSet.getString("SSN");
+                int name = resultSet.getInt("SSN");
                 String pass = resultSet.getString("password");
                  managerflag = resultSet.getInt("mflag");
-                if (username.getText().matches(name) && password.getText().matches(pass)) {
+                if (Integer.parseInt(username.getText())==name && password.getText().matches(pass)) {
                     //user = DbWrapper.getUser(resultSet);
                     stmt.close();
                     con.close();
@@ -128,9 +131,9 @@ public class loginController implements Initializable {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 msg.setTextFill(Color.valueOf("#698ee4"));
-                String name = rs.getString("T_SSN");
+                int name = rs.getInt("T_SSN");
                 String pass = rs.getString("password");
-                if (username.getText().matches(name) && password.getText().matches(pass)) {
+                if (Integer.parseInt(username.getText())==name && password.getText().matches(pass)) {
                     //user = DbWrapper.getUser(resultSet);
                     stmt.close();
                     con.close();
@@ -149,6 +152,45 @@ public class loginController implements Initializable {
             msg.textProperty().unbind();
             return false;
         }
+    }
+    @FXML
+    public void change(){
+          if(selected.equals("member")||selected.equals("administrator"))
+          {
+              String sql = "update member set PASSWORD  = ? where SSN = ?";
+
+              try {
+                  con0=main.getConnection();
+                  PreparedStatement stmt = con0.prepareStatement( sql);
+                  stmt.setString(1,reset.getText());
+                  stmt.setInt(2,Integer.parseInt(userID.getText()));
+                  stmt.executeUpdate();
+
+                  stmt.close();
+                  con0.close();
+              } catch (SQLException e) {
+                  e.printStackTrace();
+              }
+          }
+          else if (selected.equals("teacher"))
+          {
+              String sql = "update TEACHER set PASSWORD  = ? where T_SSN = ?";
+
+              try {
+                  con0=main.getConnection();
+                  PreparedStatement stmt = con0.prepareStatement( sql);
+                  stmt.setString(1,reset.getText());
+                  stmt.setInt(2,Integer.parseInt(userID.getText()));
+                  stmt.executeUpdate();
+
+                  stmt.close();
+                  con0.close();
+              } catch (SQLException e) {
+                  e.printStackTrace();
+              }
+          }
+          ///show message and maybe send email but i'll do later
+          main.closePopup();
     }
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
