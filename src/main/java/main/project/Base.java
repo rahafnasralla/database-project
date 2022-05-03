@@ -20,7 +20,7 @@ public class Base extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(Base.class.getResource("choose.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Base.class.getResource("member_dashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 986, 731);
         stage.setTitle("Al'Awda Sports Club");
         stage.getIcons().add(new Image("icon.png"));

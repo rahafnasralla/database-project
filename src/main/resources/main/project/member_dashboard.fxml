@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.project.dashboardcontroller">
    <top>
       <Pane prefHeight="80.0" prefWidth="986.0" style="-fx-background-color: #0f655f;" BorderPane.alignment="CENTER">
          <children>
@@ -30,30 +30,40 @@
    <left>
       <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3e8a74;" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutY="194.0" prefHeight="237.0" prefWidth="201.0">
+            <VBox layoutY="175.0" prefHeight="451.0" prefWidth="201.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="199.0" style="-fx-background-color: #3e8a74;" text="Home" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#home" prefHeight="66.0" prefWidth="199.0" style="-fx-background-color: #3e8a74;" text="Home" textFill="WHITE">
                      <font>
                         <Font name="Trebuchet MS Bold" size="36.0" />
                      </font></Button>
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="196.0" style="-fx-background-color: #3e8a74;" text="Course" textFill="WHITE">
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#profile" prefHeight="66.0" prefWidth="196.0" style="-fx-background-color: #3e8a74;" text="Profile" textFill="WHITE">
                      <font>
                         <Font name="Trebuchet MS Bold" size="36.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #3e8a74;" text="Event" textFill="WHITE">
+                  <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#course" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #3e8a74;" text="Course" textFill="WHITE">
                      <font>
                         <Font name="Trebuchet MS Bold" size="36.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="142.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #3e8a74;" text="Vote" textFill="WHITE">
+                  <Button layoutX="10.0" layoutY="142.0" mnemonicParsing="false" onAction="#event" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #3e8a74;" text="Event" textFill="WHITE">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="36.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#vote" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #3e8a74;" text="Vote" textFill="WHITE">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="36.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="340.0" mnemonicParsing="false" onAction="#renew" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #3e8a74;" text="Renew" textFill="WHITE">
                      <font>
                         <Font name="Trebuchet MS Bold" size="36.0" />
                      </font>
                   </Button>
                </children>
             </VBox>
-            <ImageView fitHeight="167.0" fitWidth="200.0" layoutX="-6.0" layoutY="42.0">
+            <ImageView fitHeight="167.0" fitWidth="200.0" layoutY="8.0">
                <image>
                   <Image url="@../../images/flame-cloud.gif" />
                </image>
@@ -64,7 +74,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <StackPane fx:id="contentarea" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </center>
