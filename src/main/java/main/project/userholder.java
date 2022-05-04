@@ -1,11 +1,9 @@
 package main.project;
 
 
-import model.member;
-
 public final class userholder {
 
-    private member user;
+    private user user;
     private final static userholder INSTANCE = new userholder();
 
     private userholder() {}
@@ -14,11 +12,11 @@ public final class userholder {
         return INSTANCE;
     }
 
-    public void setUser(member u) {
+    public void setUser(user u) {
         this.user = u;
     }
 
-    public member getUser() {
+    public user getUser() {
         return this.user;
     }
 }

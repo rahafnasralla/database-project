@@ -7,11 +7,14 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.util.logging.Logger;
-
+///make renew available when the membership is about to end
+//show nominate popup when it's nomination time
 public class dashboardcontroller {
     @FXML
     private StackPane contentarea;
-
+    public void initialize() {
+        navigate("member_home.fxml");
+    }
     public void navigate(String f){
         try {
             Parent fxml = FXMLLoader.load(getClass().getResource(f));
@@ -28,7 +31,7 @@ public class dashboardcontroller {
     }
     @FXML
     public void profile() {
-        navigate("member_home.fxml");
+        navigate("member_profile.fxml");
     }
     @FXML
     public void course() {
@@ -44,8 +47,7 @@ public class dashboardcontroller {
     }
     @FXML
     public void renew() {
-        navigate("member_home.fxml");
+        navigate("member_renew.fxml");
     }
 
 }
-////look at the photo in event page

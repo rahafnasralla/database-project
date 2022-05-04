@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="651.0" prefWidth="786.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.project.profileController">
+   <children>
+      <ImageView fx:id="img" fitHeight="149.0" fitWidth="181.0" layoutX="42.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="name" layoutX="40.0" layoutY="217.0" prefHeight="17.0" prefWidth="243.0" />
+      <Button layoutX="701.0" layoutY="44.0" mnemonicParsing="false" onAction="#signout" text="Sign out" />
+      <Label fx:id="email" layoutX="40.0" layoutY="256.0" prefHeight="17.0" prefWidth="243.0" text="Email" />
+      <ComboBox fx:id="update" layoutX="36.0" layoutY="369.0" onAction="#chooseWhat" prefHeight="25.0" prefWidth="243.0" promptText="Update" />
+      <TextField fx:id="text" layoutX="36.0" layoutY="420.0" prefHeight="25.0" prefWidth="243.0" promptText="Write new info" />
+      <Label fx:id="address" layoutX="40.0" layoutY="293.0" prefHeight="17.0" prefWidth="243.0" text="Address" />
+      <Label fx:id="msg" layoutX="42.0" layoutY="541.0" text="msg" />
+      <Button layoutX="36.0" layoutY="477.0" mnemonicParsing="false" onAction="#updateInfo" prefHeight="25.0" prefWidth="93.0" text="Update" />
+      <ImageView fitHeight="547.0" fitWidth="243.0" layoutX="519.0" layoutY="97.0">
+         <image>
+            <Image url="@../../images/fogg-140.png" />
+         </image>
+      </ImageView>
+      <DatePicker fx:id="date" layoutX="29.0" layoutY="420.0" onAction="#date" prefHeight="25.0" prefWidth="252.0" />
+      <Button fx:id="button" layoutX="103.0" layoutY="420.0" mnemonicParsing="false" onAction="#choosePhoto" text="choose photo" />
+   </children>
 </AnchorPane>

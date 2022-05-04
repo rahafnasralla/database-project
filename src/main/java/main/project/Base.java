@@ -7,10 +7,16 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.imageio.ImageIO;
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Base extends Application {
     private static Stage stage;
@@ -20,7 +26,7 @@ public class Base extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(Base.class.getResource("member_dashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Base.class.getResource("choose.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 986, 731);
         stage.setTitle("Al'Awda Sports Club");
         stage.getIcons().add(new Image("icon.png"));

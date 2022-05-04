@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="651.0" prefWidth="786.0" style="-fx-background-color: #fef6f0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.project.renewController">
+   <children>
+      <Button layoutX="88.0" layoutY="449.0" mnemonicParsing="false" onAction="#renew" style="-fx-background-color: #d5e3d5; -fx-background-radius: 100;" text="Renew">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="type" layoutX="82.0" layoutY="361.0" prefHeight="51.0" prefWidth="290.0" promptText="Membership type" style="-fx-background-color: #d5e3d5; -fx-font-size: 24; -fx-background-radius: 100;" />
+      <Label fx:id="cardno" layoutX="82.0" layoutY="174.0" prefHeight="35.0" prefWidth="239.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="price" layoutX="88.0" layoutY="229.0" prefHeight="35.0" prefWidth="239.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="validfor" layoutX="82.0" layoutY="291.0" prefHeight="35.0" prefWidth="239.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="505.0" fitWidth="411.0" layoutX="376.0" layoutY="140.0">
+         <image>
+            <Image url="@../../images/h.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

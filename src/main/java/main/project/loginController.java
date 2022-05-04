@@ -9,17 +9,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import model.member;
 
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
 public class loginController implements Initializable {
-
+    ///do a function to check user type;
       ObservableList<String> list = FXCollections.observableArrayList("member","administrator","teacher");
       int managerflag;
-      private member user;
+      private user user;
       private Connection con0;
       private final  Base main = new Base();
       @FXML
@@ -52,7 +51,7 @@ public class loginController implements Initializable {
       }
     @FXML
     public void login() {
-          System.out.println("hii");
+
           if(selected.equals("member")||selected.equals("administrator"))
           {
               if(username.getText().isEmpty() || password.getText().isEmpty()){
@@ -104,7 +103,8 @@ public class loginController implements Initializable {
                 String pass = resultSet.getString("password");
                  managerflag = resultSet.getInt("mflag");
                 if (Integer.parseInt(username.getText())==name && password.getText().matches(pass)) {
-                    //user = DbWrapper.getUser(resultSet);
+                    user = DbWrapper.getUser(resultSet);
+                    setUser();
                     stmt.close();
                     con.close();
                     msg.setText("Success");
@@ -134,13 +134,15 @@ public class loginController implements Initializable {
                 int name = rs.getInt("T_SSN");
                 String pass = rs.getString("password");
                 if (Integer.parseInt(username.getText())==name && password.getText().matches(pass)) {
-                    //user = DbWrapper.getUser(resultSet);
+                    user = DbWrapper.getUser(rs);
+                    setUser();
                     stmt.close();
                     con.close();
                     msg.setText("Success");
                     return true;
                 }
             }
+            //setUser();
             stmt.close();
             con.close();
             msg.setTextFill(Color.RED);

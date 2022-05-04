@@ -2,8 +2,10 @@ package main.project;
 
 import java.time.LocalDate;
 public class user {
+    private membership membership;
+    private family family;
     private int ID;
-    private int pass;
+    private String pass;
     private String fname;
     private String lname;
     private int pnumber;
@@ -21,9 +23,9 @@ public class user {
     public user()
     {
       ID=0;
-      pass=elect=0;
+      elect=0;
       pnumber=mngflag=votes=0;
-      fname=lname=$address=e_mail=gender=null;
+      fname=lname=$address=e_mail=gender=pass=null;
       blood="A+";
       disable="  ";
       status = "single";
@@ -31,8 +33,8 @@ public class user {
     }
     public void setID(int ID) {this.ID=ID;}
     public int getID() {return this.ID;}
-    public void setPass(int pass) {this.pass=pass;}
-    public int getPass() {return this.pass;}
+    public void setPass(String pass) {this.pass=pass;}
+    public String getPass() {return this.pass;}
     public void setPnumber(int pnumber) {this.pnumber=pnumber;}
     public int getPnumber() {return this.pnumber;}
     public void setFname(String fname) {this.fname=fname;}
@@ -63,6 +65,11 @@ public class user {
     public int getVotes() {return this.votes;}
     public void setPhoto(byte[] photo) {this.photo=photo;}
     public byte[] getPhoto() {return this.photo;}
+    public void setMembership(membership m){this.membership=m;}
+    public membership getMembership(){return this.membership;}
+    public void setFamily(family f) {this.family=f;}
+    public family getFamily(){return this.family;}
+
 
 
 }

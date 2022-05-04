@@ -117,8 +117,8 @@ public class signupController implements Initializable {
             user.setGender("female");
         else if (male.isSelected())
             user.setGender("male");
-        user.setPass(Integer.parseInt(password.getText()));
-        if(user.getPass()==Integer.parseInt(confirm.getText()))
+        user.setPass(password.getText());
+        if(user.getPass().equals(confirm.getText()))
         {
             msg.setTextFill(Color.valueOf("#698ee4"));
             msg.setText("correct");
@@ -138,7 +138,7 @@ public class signupController implements Initializable {
                     stmt.setString(6, user.getEmail());
                     stmt.setString(7, user.getGender() );
                     stmt.setDate(8, Date.valueOf(user.getBirthdate()) ); //check
-                    stmt.setInt(9,user.getPass() );
+                    stmt.setString(9,user.getPass() );
                     stmt.setBytes(10,user.getPhoto() );  //will do
                     stmt.setString(11, user.getBlood() );
                     stmt.setString(12, user.getDisable() );
@@ -171,7 +171,7 @@ public class signupController implements Initializable {
                     stmt.setString(6, user.getEmail());
                     stmt.setString(7, user.getGender() );
                     stmt.setDate(8, Date.valueOf(user.getBirthdate()) ); //check
-                    stmt.setInt(9,user.getPass() );
+                    stmt.setString(9,user.getPass() );
                     stmt.executeUpdate();
                     stmt.close();
                     con.close();
@@ -272,6 +272,7 @@ public class signupController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+         user.setFamily(family);
          main.popupScene("membership_popup.fxml");
     }
     @FXML
@@ -302,18 +303,19 @@ public class signupController implements Initializable {
         validfor.setText("Expiring Date :"+membership.getExpiring());
         cardno.setText("Card Number :"+membership.getCardnumber());
         price.setText("Price :"+membership.getPrice());
+        user.setMembership(membership);
 
     }
     @FXML
     public void addmembership(){
 
-        main.changeScene("member_dashboard.fxml");
+        main.changeScene("login.fxml");
         main.closePopup();
     }
     @FXML
     public void ok()
     {
-        main.changeScene("member_dashboard.fxml");  ///for now
+        main.changeScene("login.fxml");  ///for now
         main.closePopup();
     }
 
