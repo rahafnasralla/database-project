@@ -303,12 +303,11 @@ public class signupController implements Initializable {
         validfor.setText("Expiring Date :"+membership.getExpiring());
         cardno.setText("Card Number :"+membership.getCardnumber());
         price.setText("Price :"+membership.getPrice());
-        user.setMembership(membership);
 
     }
     @FXML
     public void addmembership(){
-
+        user.setMembership(membership);
         main.changeScene("login.fxml");
         main.closePopup();
     }

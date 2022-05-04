@@ -27,7 +27,7 @@ public class user {
       pnumber=mngflag=votes=0;
       fname=lname=$address=e_mail=gender=pass=null;
       blood="A+";
-      disable="  ";
+      disable=" ";
       status = "single";
       birthdate=LocalDate.of(2013, 6, 13);
     }
