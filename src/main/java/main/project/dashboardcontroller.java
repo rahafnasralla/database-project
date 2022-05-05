@@ -3,6 +3,7 @@ package main.project;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
@@ -12,6 +13,8 @@ import java.util.logging.Logger;
 public class dashboardcontroller {
     @FXML
     private StackPane contentarea;
+    @FXML
+    public Button voteb;
     public void initialize() {
         navigate("member_home.fxml");
     }

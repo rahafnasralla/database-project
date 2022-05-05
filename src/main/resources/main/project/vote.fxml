@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="786.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="786.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.project.voteController">
    <children>
-      <Button layoutX="481.0" layoutY="559.0" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #4a67da 0.0%, #ffffff 100.0%); -fx-background-radius: 100;" text="Submit Vote">
-         <font>
-            <Font name="Trebuchet MS Bold" size="30.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="221.0" fitWidth="403.0" layoutY="430.0">
+      <ImageView fitHeight="221.0" fitWidth="566.0" layoutX="64.0" layoutY="431.0">
          <image>
             <Image url="@../../images/vote.png" />
          </image>
       </ImageView>
+      <FlowPane layoutX="142.0" layoutY="48.0" />
+      <ScrollPane fx:id="scroll" hbarPolicy="NEVER" layoutX="91.0" layoutY="7.0" prefHeight="430.0" prefWidth="503.0" style="-fx-background-color: white;" vbarPolicy="NEVER">
+         <content>
+            <GridPane fx:id="grid" prefHeight="135.0" prefWidth="502.0" style="-fx-background-color: white;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <Label fx:id="msg" layoutX="474.0" layoutY="453.0" prefHeight="17.0" prefWidth="281.0" textFill="#5490eb" />
    </children>
 </AnchorPane>
