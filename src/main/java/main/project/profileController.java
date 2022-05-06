@@ -65,7 +65,7 @@ public class profileController implements Initializable {
     @FXML
     public void signout() {
         userholder.getInstance().setUser(null);
-        main.changeScene("login.fxml");
+        main.changeScene("choose.fxml");
 
     }
     @FXML
