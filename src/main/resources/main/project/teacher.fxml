@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="986.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.project.teacherController">
+   <children>
+      <ImageView fitHeight="299.0" fitWidth="486.0" layoutX="14.0" layoutY="432.0">
+         <image>
+            <Image url="@../../images/signup.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="table" layoutX="30.0" layoutY="118.0" prefHeight="285.0" prefWidth="479.0" style="-fx-background-radius: 10;">
+        <columns>
+          <TableColumn fx:id="sport" prefWidth="75.0" text="Sport" />
+          <TableColumn fx:id="date" prefWidth="99.0" text="Starting Date" />
+            <TableColumn fx:id="duration" prefWidth="78.0" text="Duration " />
+            <TableColumn fx:id="price" prefWidth="48.0" text="Price" />
+            <TableColumn fx:id="enrolled" prefWidth="178.0" text="Number of enrolled students" />
+        </columns>
+      </TableView>
+      <Label fx:id="name" layoutX="14.0" layoutY="14.0" text="Name">
+         <font>
+            <Font name="Trebuchet MS" size="36.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.5634746551513672" green="0.8301108479499817" blue="0.9736841917037964" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.21052631735801697" green="0.044834308326244354" blue="0.044834308326244354" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <AnchorPane layoutX="531.0" prefHeight="731.0" prefWidth="455.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #dfeff8 0.0%, #74a0ab 100.0%);">
+         <children>
+            <Button fx:id="add" layoutX="190.0" layoutY="656.0" mnemonicParsing="false" onAction="#add" prefHeight="30.0" prefWidth="92.0" style="-fx-background-radius: 100; -fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #90d4f8 0.0%, #360b0b 100.0%);" text="Add" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="signout" layoutX="380.0" layoutY="14.0" mnemonicParsing="false" onAction="#signout" prefHeight="35.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #90d4f8 0.0%, #360b0b 100.0%);" text="Sign out" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="712.0" layoutY="425.0" text="Add Course">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.18256579339504242" green="0.3803454041481018" blue="0.4868420958518982" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.21052631735801697" green="0.044834308326244354" blue="0.044834308326244354" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="durationinput" layoutX="688.0" layoutY="567.0" prefHeight="25.0" prefWidth="174.0" promptText="Duration" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="priceinput" layoutX="688.0" layoutY="609.0" prefHeight="25.0" prefWidth="174.0" promptText="Price" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <ComboBox fx:id="sportinput" layoutX="687.0" layoutY="491.0" onAction="#selected" prefHeight="25.0" prefWidth="174.0" promptText="Sport" style="-fx-background-radius: 100; -fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #90d4f8 0.0%, #360b0b 100.0%); -fx-font-size: 14;" />
+      <DatePicker fx:id="dateinput" layoutX="687.0" layoutY="528.0" prefHeight="30.0" prefWidth="174.0" promptText="Starting Date" style="-fx-font-size: 14;" />
+      <PieChart fx:id="pie" layoutX="636.0" layoutY="153.0" prefHeight="260.0" prefWidth="279.0" />
+   </children>
+</AnchorPane>

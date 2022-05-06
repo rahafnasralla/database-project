@@ -64,6 +64,7 @@ public class profileController implements Initializable {
     }
     @FXML
     public void signout() {
+        userholder.getInstance().setUser(null);
         main.changeScene("login.fxml");
 
     }
@@ -108,15 +109,16 @@ public class profileController implements Initializable {
     }
 
     public void loadData(){
-        name.setText(user.getFname()+" "+user.getLname());
-        email.setText(user.getEmail());
-        address.setText(user.get$address());
+        name.setText("Name : "+user.getFname()+" "+user.getLname());
+        email.setText("Email : "+user.getEmail());
+        address.setText("Address : "+user.get$address());
         InputStream ins = new ByteArrayInputStream(user.getPhoto());
         Image photo = new Image(ins);
         if(photo != null) {
             img.setImage(photo);
-            img.setFitWidth(181);
+            img.setFitWidth(149);
             img.setFitHeight(149);
+            img.setStyle("-fx-border-radius: 50");
         }
     }
     @Override

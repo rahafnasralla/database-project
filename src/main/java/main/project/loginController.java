@@ -76,7 +76,7 @@ public class loginController implements Initializable {
                   return;
               }
               if(isTeacher())
-                  main.changeScene("member_dashboard.fxml");  //for now
+                  main.changeScene("teacher.fxml");  //for now
           }
 
     }
@@ -134,7 +134,7 @@ public class loginController implements Initializable {
                 int name = rs.getInt("T_SSN");
                 String pass = rs.getString("password");
                 if (Integer.parseInt(username.getText())==name && password.getText().matches(pass)) {
-                    user = DbWrapper.getUser(rs);
+                    user = DbWrapper.getTeacher(rs);
                     setUser();
                     stmt.close();
                     con.close();
