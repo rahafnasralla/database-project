@@ -32,6 +32,7 @@ public class reportsController {
 //            f.getContentPane().add(new JRViewer(jp)) ;
 //            f.pack();
 //            f.setVisible(true);
+
         }
         catch ( Exception ex)
         {
