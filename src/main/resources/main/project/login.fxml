@@ -76,5 +76,26 @@
          </font>
       </Button>
       <Label fx:id="msg" layoutX="554.0" layoutY="610.0" prefHeight="17.0" prefWidth="361.0" />
+      <Button layoutX="387.0" layoutY="648.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: white; -fx-border-radius: 70; -fx-border-color: black;" text="BACK">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.17535545023696683" startY="0.4834123222748815">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4482456147670746" green="0.09210526198148727" blue="0.8289473652839661" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

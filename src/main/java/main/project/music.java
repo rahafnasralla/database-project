@@ -16,7 +16,6 @@ public class music {
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
             }
 
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.logging.Logger;
 ///make renew available when the membership is about to end
 //show nominate popup when it's nomination time
@@ -16,6 +17,8 @@ public class dashboardcontroller {
     @FXML
     public Button voteb;
     public void initialize() {
+        if(LocalDate.now().isBefore(LocalDate.of(2022,5,9)))
+         voteb.setVisible(false);
         navigate("member_home.fxml");
     }
     public void navigate(String f){

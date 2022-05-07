@@ -2,6 +2,7 @@ package main.project;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -99,10 +100,56 @@ public class signupController implements Initializable {
         selected=asa.getValue();
 
     }
+    private boolean isUser(){
+        try {
+            String sql = "select SSN from MEMBER where SSN = ?";
+            con = main.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, Integer.parseInt(idnumber.getText()));
+            ResultSet resultSet = stmt.executeQuery();
+            if(resultSet.next()) {
+                stmt.close();
+                con.close();
+                return true;
+            }
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        catch (Exception e){
+            System.out.println("Error with getting and checking User from DB");
+            e.printStackTrace();
+        }
+        return false;
+    }
+    private boolean isTeacher(){
+        try {
+            String sql = "select T_SSN from TEACHER where T_SSN = ?";
+            con = main.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, Integer.parseInt(idnumber.getText()));
+            ResultSet resultSet = stmt.executeQuery();
+            if(resultSet.next()) {
+                stmt.close();
+                con.close();
+                return true;
+            }
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        catch (Exception e){
+            System.out.println("Error with getting and checking User from DB");
+            e.printStackTrace();
+        }
+        return false;
+    }
     @FXML
     public void signingup() {
         if(idnumber.getText().isEmpty()||firstname.getText().isEmpty()||lastname.getText().isEmpty()||phonenumber.getText().isEmpty()||address.getText().isEmpty()||email.getText().isEmpty()||
-        sex.getSelectedToggle()==null||password.getText().isEmpty()||confirm.getText().isEmpty()||selected==null)
+        sex.getSelectedToggle()==null||password.getText().isEmpty()||confirm.getText().isEmpty()||selected==null||isUser())
         {
             msg.setText("please do not leave an empty field");
         }
@@ -122,7 +169,7 @@ public class signupController implements Initializable {
         {
             msg.setTextFill(Color.valueOf("#698ee4"));
             msg.setText("correct");
-            if(selected.equals("member"))
+            if(selected.equals("member")&&!isUser())
             {
                 main.changeScene("member.fxml");
                 try {
@@ -157,7 +204,7 @@ public class signupController implements Initializable {
                 }
 
                 }
-            else if (selected=="teacher")
+            else if (selected=="teacher"&&!isTeacher())
             {
                 try {
                     con = main.getConnection();
@@ -183,6 +230,8 @@ public class signupController implements Initializable {
                 }
                 main.popupScene("popupsuccesss.fxml");
             }
+            else
+                msg.setText("user already exists");
         }
         else
             msg.setText("the password and the confirm fields aren't identical");
@@ -308,13 +357,13 @@ public class signupController implements Initializable {
     @FXML
     public void addmembership(){
         user.setMembership(membership);
-        main.changeScene("login.fxml");
+        main.changeScene("choose.fxml");
         main.closePopup();
     }
     @FXML
     public void ok()
     {
-        main.changeScene("login.fxml");  ///for now
+        main.changeScene("choose.fxml");  ///for now
         main.closePopup();
     }
 

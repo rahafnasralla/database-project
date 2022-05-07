@@ -13,6 +13,7 @@ module main.project {
     requires java.desktop;
     requires java.sql;
     requires com.oracle.database.jdbc;
+    requires jasperreports;
 
     opens main.project to javafx.fxml;
     exports main.project;

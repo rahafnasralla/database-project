@@ -25,7 +25,7 @@
             <Font name="Trebuchet MS Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="59.0" layoutY="50.0" text="Courses Your Enrolled In :">
+      <Label layoutX="59.0" layoutY="50.0" text="Courses You just Enrolled In :">
          <font>
             <Font name="Trebuchet MS Bold" size="24.0" />
          </font>
@@ -36,11 +36,11 @@
           <TableColumn fx:id="eteacher" prefWidth="75.0" text="Teacher" />
         </columns>
       </TableView>
-      <ImageView fitHeight="324.0" fitWidth="368.0" layoutX="404.0" layoutY="20.0">
+      <Button layoutX="602.0" layoutY="556.0" mnemonicParsing="false" onAction="#enroll" text="enroll" />
+      <ImageView fitHeight="330.0" fitWidth="375.0" layoutX="397.0" layoutY="14.0">
          <image>
-            <Image url="@../../images/sport%20course.png" />
+            <Image url="@../../images/sportcourse.png" />
          </image>
       </ImageView>
-      <Button layoutX="602.0" layoutY="556.0" mnemonicParsing="false" onAction="#enroll" text="enroll" />
    </children>
 </AnchorPane>

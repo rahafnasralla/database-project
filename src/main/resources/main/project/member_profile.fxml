@@ -31,5 +31,10 @@
             <Image url="@../../images/marginalia-productive-work.gif" />
          </image>
       </ImageView>
+      <Label fx:id="votes" layoutX="27.0" layoutY="332.0" prefHeight="17.0" prefWidth="243.0" text="Number of votes">
+         <font>
+            <Font name="Trebuchet MS" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,6 +24,7 @@ public class Base extends Application {
     private static Stage stage;
     private static Stage stage2;
     private static Connection con;
+    private user u;
     music Music = new music();
     @Override
     public void start(Stage stage) throws IOException {
@@ -32,7 +35,13 @@ public class Base extends Application {
         stage.getIcons().add(new Image("icon.png"));
         stage.setScene(scene);
         Music.playMusic("C:\\Users\\rova\\Desktop\\sound.wav");
+        /// keep track
+        if(LocalTime.now().isAfter(LocalTime.of(7,0)));
+            u= DbWrapper.getManager();
         stage.show();
+        if(LocalTime.now().isAfter(LocalTime.of(6,59)))
+            JOptionPane.showMessageDialog(null,"The admin has been changed to"+u.getFname()+""+u.getLname());
+        /// keep track
     }
     public void changeScene(String fxml) {
         try {

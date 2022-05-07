@@ -85,7 +85,5 @@ public class voteController {
         System.out.println("hii");
         main.popupScene("votesubmitted.fxml");
 
-
-
     }
 }

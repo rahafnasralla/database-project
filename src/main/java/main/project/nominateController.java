@@ -25,6 +25,7 @@ public class nominateController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        main.closePopup();
     }
 
     @FXML

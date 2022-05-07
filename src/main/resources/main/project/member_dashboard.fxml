@@ -51,12 +51,12 @@
                         <Font name="Trebuchet MS Bold" size="36.0" />
                      </font>
                   </Button>
-                  <Button fx:id="voteb" mnemonicParsing="false" onAction="#vote" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #3e8a74;" text="Vote" textFill="WHITE">
+                  <Button layoutX="10.0" layoutY="340.0" mnemonicParsing="false" onAction="#renew" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #3e8a74;" text="Renew" textFill="WHITE">
                      <font>
                         <Font name="Trebuchet MS Bold" size="36.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="340.0" mnemonicParsing="false" onAction="#renew" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #3e8a74;" text="Renew" textFill="WHITE">
+                  <Button fx:id="voteb" mnemonicParsing="false" onAction="#vote" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #3e8a74;" text="Vote" textFill="WHITE">
                      <font>
                         <Font name="Trebuchet MS Bold" size="36.0" />
                      </font>

@@ -11,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
+import javax.swing.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -54,40 +55,43 @@ public class courseController implements Initializable {
     private ObservableList<course> ecourseList = FXCollections.observableArrayList();
     @FXML
     void enroll(ActionEvent event) {
-        enrolledcourses.setItems(ecourseList);
-        try {
-            //if id of course and member is repeated do something
-            String sql = "INSERT INTO COURSE_MEMBER VALUES (?,?)";
-            con = main.getConnection();
-            stmt = con.prepareStatement(sql);
-            stmt.setInt(1, user.getID());
-            stmt.setInt(2, ID);
-            String sql0 = "UPDATE COURSE set NO_ENROLLED=? where COURSE_ID = ?";
-            PreparedStatement s0 = con.prepareStatement(sql0);
-            s0.setInt(1,c.getNO_ENROLLED()+1);
-            s0.setInt(2,ID);
-            stmt.executeUpdate();
-            s0.executeUpdate();
-            con.close();
-            stmt.close();
+        if(!DbWrapper.isCourse(c,user)) {
+            try {
+                String sql = "INSERT INTO COURSE_MEMBER VALUES (?,?)";
+                con = main.getConnection();
+                stmt = con.prepareStatement(sql);
+                stmt.setInt(1, user.getID());
+                stmt.setInt(2, ID);
+                String sql0 = "UPDATE COURSE set NO_ENROLLED=? where COURSE_ID = ?";
+                PreparedStatement s0 = con.prepareStatement(sql0);
+                s0.setInt(1, c.getNO_ENROLLED() + 1);
+                s0.setInt(2, ID);
+                stmt.executeUpdate();
+                s0.executeUpdate();
+                con.close();
+                stmt.close();
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            ecourseList.add(c);
+            enrolledcourses.setItems(ecourseList);
         }
+        else
+            JOptionPane.showMessageDialog(null,"you are already enrolled");
 
     }
 
     @FXML
     void rowSelected(MouseEvent event) {
         c = availableCourses.getSelectionModel().getSelectedItem();
-        ecourseList.add(c);
         ID = c.getCOURSE_ID();
         //System.out.println(ID+"");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        asport.setCellValueFactory(new PropertyValueFactory<>("PRICE"));
+        asport.setCellValueFactory(new PropertyValueFactory<>("SPORT"));
         date.setCellValueFactory(new PropertyValueFactory<>("START_DATE"));
         duration.setCellValueFactory(new PropertyValueFactory<>("COURSE_DURATION"));
         price.setCellValueFactory(new PropertyValueFactory<>("PRICE"));
@@ -96,7 +100,7 @@ public class courseController implements Initializable {
         availableCourses.setItems(courseList);
         esport.setCellValueFactory(new PropertyValueFactory<>("SPORT"));
         eteacher.setCellValueFactory(new PropertyValueFactory<>("TEACHER"));
-        //enrolledcourses.setItems(ecourseList);
+
 
     }
 }

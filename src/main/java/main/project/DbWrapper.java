@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DbWrapper {
@@ -116,6 +117,29 @@ public class DbWrapper {
         }
         return users;
 
+    }
+
+    public static user getManager() {
+        user max = Collections.max(getnominees());
+
+        try {
+            sql = "update member set MFLAG=? where SSN = ?";
+            con = main.getConnection();
+            String s = "update member set MFLAG=? where MFLAG = 1";
+            PreparedStatement stmt0 = con.prepareStatement( s);
+            stmt0.setInt(1,0);
+            PreparedStatement stmt = con.prepareStatement( sql);
+            stmt.setInt(1,1);
+            stmt.setInt(2, max.getID());
+            stmt0.executeUpdate();
+            stmt.executeUpdate();
+            stmt.close();
+            stmt0.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return max;
     }
 
     public static List<course> getCourses()
@@ -318,28 +342,143 @@ public class DbWrapper {
         return users;
 
     }
+    private static boolean isHere(event e,user u){
+        try {
+            String sql = "select EVENT,MEMBER from EVENT_MEMBER where EVENT = ? and MEMBER = ?";
+            con = main.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, e.getEVENT_NUMBER());
+            stmt.setInt(2,u.getID());
+            ResultSet resultSet = stmt.executeQuery();
+            if(resultSet.next()) {
+                stmt.close();
+                con.close();
+                return true;
+            }
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        catch (Exception ex){
+            System.out.println("Error with getting and checking User from DB");
+            ex.printStackTrace();
+        }
+        return false;
+    }
 
     public static void forEvents(List<event> l) {
         List<user> users = getusers();
         List<event> events = getAllEvents();
         for (event e : events) {
             for (user u : users) {
-                try {
-                    String sql = "INSERT INTO EVENT_MEMBER (EVENT, MEMBER)" + "values(?,?)";
-                    con = main.getConnection();
-                    stmt = con.prepareStatement(sql);
-                    stmt.setInt(2, u.getID());
-                    stmt.setInt(1,e.getEVENT_NUMBER() );
-                    stmt.executeUpdate();
-                    con.close();
-                    stmt.close();
+                if(!isHere(e,u)) {
+                    try {
+                        String sql = "INSERT INTO EVENT_MEMBER (EVENT, MEMBER)" + "values(?,?)";
+                        con = main.getConnection();
+                        stmt = con.prepareStatement(sql);
+                        stmt.setInt(2, u.getID());
+                        stmt.setInt(1, e.getEVENT_NUMBER());
+                        stmt.executeUpdate();
+                        con.close();
+                        stmt.close();
 
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 }
 
             }
         }
+    }
+
+    public static int count(String sql){
+        try {
+            Connection con = main.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet resultSet = stmt.executeQuery();
+            int rowCount = 0;
+            while(resultSet.next()){
+                rowCount = resultSet.getInt(1);
+            }
+            con.close();
+            stmt.close();
+            return rowCount;
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public static int femalecount(){
+
+        String sql  = "select count(SSN) from MEMBER where Gender ='female' ";
+        return count(sql);
+
+    }
+
+
+
+    public static int malecount() {
+
+        String sql  = "select count(SSN) from MEMBER where Gender ='male' ";
+        return count(sql);
+    }
+
+//    public static List<course> getMemberCourses(user u)
+//    {
+//        try {
+//            List<course> List = new ArrayList<>();
+//            sql = "select PRICE,START_DATE,COURSE_ID,COURSE_DURATION,SPORT,NO_ENROLLED from COURSE inner join COURSE_MEMBER on MEMBER=?";
+//            con = main.getConnection();
+//            stmt = con.prepareStatement(sql);
+//            stmt.setInt(1,u.getID());
+//            ResultSet rs = stmt.executeQuery();
+//            while(rs.next()){
+//                course course = new course();
+//                course.setCOURSE_ID(rs.getInt("COURSE_ID"));
+//                course.setCOURSE_DURATION(rs.getInt("COURSE_DURATION"));
+//                course.setNO_ENROLLED(rs.getInt("NO_ENROLLED"));
+//                course.setPRICE(rs.getInt("PRICE"));
+//                course.setSPORT(rs.getString("SPORT"));
+//                course.setSTART_DATE(rs.getDate("START_DATE").toLocalDate());
+//                course.setTEACHER(rs.getString("FNAME")+""+rs.getString("LNAME"));
+//                List.add(course);
+//            }
+//            con.close();
+//            stmt.close();
+//            return List;
+//
+//        }catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return null;
+//    }
+
+    public static boolean isCourse(course c,user u){
+        try {
+            String sql = "select COURSE,MEMBER from COURSE_MEMBER where COURSE = ? and MEMBER = ?";
+            con = main.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, c.getCOURSE_ID());
+            stmt.setInt(2,u.getID());
+            ResultSet resultSet = stmt.executeQuery();
+            if(resultSet.next()) {
+                stmt.close();
+                con.close();
+                return true;
+            }
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        catch (Exception ex){
+            System.out.println("Error with getting and checking User from DB");
+            ex.printStackTrace();
+        }
+        return false;
     }
 
 

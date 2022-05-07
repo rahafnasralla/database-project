@@ -1,7 +1,7 @@
 package main.project;
 
 import java.time.LocalDate;
-public class user {
+public class user implements Comparable<user> {
     private membership membership;
     private family family;
     private int ID;
@@ -72,4 +72,13 @@ public class user {
 
 
 
+    @Override
+    public int compareTo(user o) {
+        if (this.getVotes() > o.getVotes()) {
+            return 1;
+        } else if (this.getVotes() < o.getVotes()) {
+            return -1;
+        }
+        return 0;
+    }
 }

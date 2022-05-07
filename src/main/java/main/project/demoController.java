@@ -22,6 +22,7 @@ public class demoController {
     private Connection con;
     private final Base main = new Base();
     private Parent root;
+    boolean first = true;
     @FXML
     private AnchorPane pane;
     @FXML
@@ -58,20 +59,23 @@ public class demoController {
     }
     @FXML
     public void choose() {
-        pane.setStyle("-fx-border-color: #000000");
+        if(first==true) {
+            pane.setStyle("-fx-border-color: #000000");
             String sql = "update member set NOVOTES=? where SSN = ?";
             try {
                 con = main.getConnection();
                 PreparedStatement stmt = con.prepareStatement(sql);
 
-                stmt.setInt(1,(u.getVotes()+1));
-                stmt.setInt(2,u.getID());
+                stmt.setInt(1, (u.getVotes() + 1));
+                stmt.setInt(2, u.getID());
                 stmt.executeUpdate();
                 stmt.close();
                 con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            first = false;
+        }
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("vote.fxml"));

@@ -9,12 +9,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="178.0" prefWidth="500.0" style="-fx-background-color: #EE3861;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.project.nominateController">
    <children>
-      <Button fx:id="nominate" layoutX="168.0" layoutY="116.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="61.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-color: #AC2244; -fx-border-radius: 100;" text="Yes">
+      <Button fx:id="nominate" layoutX="168.0" layoutY="116.0" mnemonicParsing="false" onAction="#nominate" prefHeight="32.0" prefWidth="61.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-color: #AC2244; -fx-border-radius: 100;" text="Yes">
          <font>
             <Font name="Trebuchet MS Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="cancel" layoutX="263.0" layoutY="116.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-color: #AC2244; -fx-border-radius: 100;" text="cancel">
+      <Button fx:id="cancel" layoutX="263.0" layoutY="116.0" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="74.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-color: #AC2244; -fx-border-radius: 100;" text="cancel">
          <font>
             <Font name="Trebuchet MS Bold" size="14.0" />
          </font>

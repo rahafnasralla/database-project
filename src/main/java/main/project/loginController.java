@@ -2,6 +2,7 @@ package main.project;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -197,6 +198,10 @@ public class loginController implements Initializable {
     @FXML
     public void close(){
         main.closePopup();  ///or maybe make it close on login scene maybe
+    }
+    @FXML
+    void back(ActionEvent event) {
+          main.changeScene("choose.fxml");
     }
 
     @Override

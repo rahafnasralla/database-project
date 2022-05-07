@@ -12,12 +12,15 @@ import javafx.stage.FileChooser;
 import java.io.*;
 import java.net.URL;
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 public class profileController implements Initializable {
     private final  Base main = new Base();
     private user user = userholder.getInstance().getUser();
+    @FXML
+    private Label votes;
     @FXML
     private Label name;
     @FXML
@@ -54,7 +57,13 @@ public class profileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadData();
-
+        votes.setVisible(false);
+        if(user.getElect()!=1)
+        {   votes.setVisible(false);
+            main.popupScene("nominee.fxml");
+            user.setElect(1);}
+        else if(user.getElect()==1) {
+            votes.setText("number of votes : " + user.getVotes());
+            votes.setVisible(true);}
     }
-
 }
