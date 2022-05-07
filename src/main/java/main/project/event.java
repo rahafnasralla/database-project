@@ -10,7 +10,7 @@ public class event {
     private int EVENT_NUMBER;
     private LocalDate EVENT_DATE;
     private String EVENT_NAME;
-    private Timestamp TIME;
+    private String TIME;
     private String INTRESTED;
 
     public event(){
@@ -28,11 +28,11 @@ public class event {
         this.INTRESTED = INTRESTED;
     }
 
-    public Timestamp getTIME() {
+    public String getTIME() {
         return TIME;
     }
 
-    public void setTIME(Timestamp TIME) {
+    public void setTIME(String TIME) {
         this.TIME = TIME;
     }
 

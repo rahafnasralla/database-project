@@ -30,7 +30,7 @@ public class teacherController implements Initializable {
     private Connection con;
     private final  Base main = new Base();
     private user user = userholder.getInstance().getUser();
-    ObservableList<String> sportList = FXCollections.observableArrayList("Tennis","Ping pong","Basketball","track race");
+    ObservableList<String> sportList = FXCollections.observableArrayList("Tennis","Ping pong","Basketball","track race","football");
     private ObservableList<course> list = FXCollections.observableArrayList();
     String chosen;
     course c = new course();
@@ -54,9 +54,6 @@ public class teacherController implements Initializable {
 
     @FXML
     private Label name;
-
-    @FXML
-    private PieChart pie;
 
     @FXML
     private TableColumn<course, Integer> price;

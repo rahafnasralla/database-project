@@ -61,6 +61,8 @@ public class DbWrapper {
 
         }
     }
+
+
     public static List<user> getnominees(){
         List<user> users = new ArrayList<>();
         sql  = "Select * from member WHERE ELECTED=1";
@@ -160,7 +162,7 @@ public class DbWrapper {
                 e.setEVENT_DATE(rs.getDate("EVENT_DATE").toLocalDate());
                 e.setEVENT_NAME(rs.getString("EVENT_NAME"));
                 e.setINTRESTED(rs.getString("INTRESTED"));
-                e.setTIME(rs.getTimestamp("TIME"));
+                e.setTIME(rs.getString("TIME"));
                 e.setEVENT_NUMBER(rs.getInt("EVENT_NUMBER"));
                 List.add(e);
             }
@@ -232,6 +234,111 @@ public class DbWrapper {
             e.printStackTrace();
             return null;
 
+        }
+    }
+
+    public static List<event> getAllEvents() {
+        try {
+            int id=10;
+            List<event> List = new ArrayList<>();
+            sql = "select * from EVENT ";
+            con = main.getConnection();
+            stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                event e = new event();
+                e.setEVENT_DATE(rs.getDate("EVENT_DATE").toLocalDate());
+                e.setEVENT_NAME(rs.getString("EVENT_NAME"));
+                e.setTIME(rs.getString("TIME"));
+                e.setEVENT_NUMBER(rs.getInt("EVENT_NUMBER"));
+                List.add(e);
+            }
+            con.close();
+            stmt.close();
+            return List;
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static List<user> getusers(){
+        List<user> users = new ArrayList<>();
+        sql  = "Select * from member WHERE ELECTED=1";
+        try {
+            con = main.getConnection();
+            stmt = con.prepareStatement(sql);
+            ResultSet r = stmt.executeQuery();
+            while (r.next()){
+                byte[] photo = r.getBytes("photo");
+                int number = r.getInt("PHONE_NUMBER");
+                String address = r.getString("ADDRESS");
+                String email = r.getString("EMAIL");
+                String pass = r.getString("PASSWORD");
+                String status = r.getString("MARTIAL_STATUS");
+                String blood = r.getString("BLOOD_TYPE");
+                int ID = r.getInt("SSN");
+                String gender = r.getString("GENDER");
+                String disability = r.getString("DISABILITY");
+                LocalDate bdate = r.getDate("BIRTHDATE").toLocalDate();
+                String fname = r.getString("F_NAME");
+                String lname = r.getString("L_NAME");
+                int votes = r.getInt("NOVOTES");
+                int elect = r.getInt("ELECTED");
+                int flag = r.getInt("MFLAG");
+                user user = new user();
+                user.setPnumber(number);
+                user.set$address(address);
+                user.setEmail(email);
+                user.setPass(pass);
+                user.setStatus(status);
+                user.setPhoto(photo);
+                user.setBlood(blood);
+                user.setID(ID);
+                user.setBirthdate(bdate);
+                user.setGender(gender);
+                user.setDisable(disability);
+                user.setElect(elect);
+                user.setMngflag(flag);
+                user.setFname(fname);
+                user.setLname(lname);
+                user.setVotes(votes);
+                users.add(user);
+
+            }
+            con.close();
+            stmt.close();
+            return users;
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return users;
+
+    }
+
+    public static void forEvents(List<event> l) {
+        List<user> users = getusers();
+        List<event> events = getAllEvents();
+        for (event e : events) {
+            for (user u : users) {
+                try {
+                    String sql = "INSERT INTO EVENT_MEMBER (EVENT, MEMBER)" + "values(?,?)";
+                    con = main.getConnection();
+                    stmt = con.prepareStatement(sql);
+                    stmt.setInt(2, u.getID());
+                    stmt.setInt(1,e.getEVENT_NUMBER() );
+                    stmt.executeUpdate();
+                    con.close();
+                    stmt.close();
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+            }
         }
     }
 

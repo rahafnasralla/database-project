@@ -61,7 +61,7 @@ public class loginController implements Initializable {
               }
               if(isMember()) {
                   if (managerflag == 1)
-                      main.changeScene("$signup.fxml"); ///for now
+                      main.changeScene("admin.fxml"); ///for now
                   else
                       main.changeScene("member_dashboard.fxml");
               }

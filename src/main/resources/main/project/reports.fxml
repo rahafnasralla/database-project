@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="731.0" prefWidth="986.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.project.reportsController">
+   <children>
+      <ImageView fitHeight="702.0" fitWidth="468.0" layoutX="14.0" layoutY="15.0">
+         <image>
+            <Image url="@../../images/sammy-man-financial-analyst.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="672.0" layoutY="602.0" mnemonicParsing="false" onAction="#generate" style="-fx-background-radius: 100; -fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #f2c056 0.0%, #1a6791 100.0%);" text="Generate Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <PieChart fx:id="pie" layoutX="462.0" layoutY="54.0" />
+      <ComboBox fx:id="choose" layoutX="645.0" layoutY="506.0" onAction="#choice" prefHeight="25.0" prefWidth="219.0" promptText="choose" style="-fx-background-radius: 100; -fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #f2c056 0.0%, #1a6791 100.0%); -fx-font-size: 16;" />
+   </children>
+</AnchorPane>

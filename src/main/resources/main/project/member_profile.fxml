@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,19 +22,10 @@
          <font>
             <Font name="Trebuchet MS" size="18.0" />
          </font></Label>
-      <ComboBox fx:id="update" layoutX="27.0" layoutY="341.0" onAction="#chooseWhat" prefHeight="33.0" prefWidth="254.0" promptText="Update" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #c5f5d7 0.0%, #f8dfdf 100.0%); -fx-background-radius: 50;" />
-      <TextField fx:id="text" layoutX="28.0" layoutY="408.0" prefHeight="33.0" prefWidth="243.0" promptText="Write new info" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #c5f5d7 0.0%, #f8dfdf 100.0%); -fx-background-radius: 100;" />
       <Label fx:id="address" layoutX="27.0" layoutY="276.0" prefHeight="17.0" prefWidth="243.0" text="Address">
          <font>
             <Font name="Trebuchet MS" size="18.0" />
          </font></Label>
-      <Label fx:id="msg" layoutX="27.0" layoutY="559.0" prefHeight="27.0" prefWidth="304.0">
-         <font>
-            <Font name="Trebuchet MS" size="18.0" />
-         </font></Label>
-      <Button layoutX="36.0" layoutY="471.0" mnemonicParsing="false" onAction="#updateInfo" prefHeight="33.0" prefWidth="97.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #c5f5d7 0.0%, #f8dfdf 100.0%); -fx-background-radius: 100;" text="Update" />
-      <DatePicker fx:id="date" layoutX="23.0" layoutY="408.0" onAction="#date" prefHeight="33.0" prefWidth="254.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #c5f5d7 0.0%, #f8dfdf 100.0%); -fx-background-radius: 100; -fx-border-radius: 100;" />
-      <Button fx:id="button" layoutX="96.0" layoutY="408.0" mnemonicParsing="false" onAction="#choosePhoto" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #c5f5d7 0.0%, #f8dfdf 100.0%); -fx-background-radius: 50;" text="choose photo" />
       <ImageView fitHeight="572.0" fitWidth="440.0" layoutX="332.0" layoutY="67.0">
          <image>
             <Image url="@../../images/marginalia-productive-work.gif" />
